@@ -1,7 +1,7 @@
 ---
+- name: Testing vCenter connection and parameters
 - hosts: all
-#  task:
-#    - debug:
-#      msg: vCenter = {{VMWARE_HOST}} vcenter user = {{VMWARE_USER}}  password ={{VMWARE_PASSWORD}} cert valid = {{VMWARE_VALIDATE_CERTS}}
-- name: print ansible_local
-  debug: var=ansible_local
+  tasks:
+    - name: Debuging the parameters
+      debug:
+        msg: vCenter = {{VMWARE_HOST}} vcenter user = {{VMWARE_USER}}  password ={{VMWARE_PASSWORD}} cert valid = {{VMWARE_VALIDATE_CERTS}}
