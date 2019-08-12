@@ -1,7 +1,7 @@
-- name: Hello World Sample
-  hosts: all
-  gather_facts: no
+---
+- hosts: all
   tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
+      - name: Create file
+        file:
+            path: /tmp/yallo
+            state: touch
