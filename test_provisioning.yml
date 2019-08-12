@@ -5,9 +5,9 @@
   tasks:
   - name: Clone the template
     vmware_guest:
-      hostname: "{{ lookup("env", "VMWARE_HOST") }}"
-      username: "{{ lookup("env", "VMWARE_USER") }}"
-      password: "{{ lookup("env", "VMWARE_PASSWORD") }}"
+      hostname: '{{ lookup("env", "VMWARE_HOST") }}'
+      username: '{{ lookup("env", "VMWARE_USER") }}'
+      password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
       validate_certs: False
       name: test_ansible
       template: "rhcos-latest"
