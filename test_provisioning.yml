@@ -16,3 +16,5 @@
       state: poweredon
       cluster: "OpenShift Containers"
       wait_for_ip_address: yes
+    delegate_to: localhost
+  register: deploy_vm
