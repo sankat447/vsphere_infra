@@ -4,4 +4,4 @@
   tasks:
     - name: Debuging the parameters
       debug:
-        msg: vCenter = {{VMWARE_HOST}} vcenter user = {{VMWARE_USER}}  password ={{VMWARE_PASSWORD}} cert valid = {{VMWARE_VALIDATE_CERTS}}
+        msg: vCenter = {{ lookup("env", "VMWARE_HOST") }} {{ lookup("env", "VMWARE_USER") }} {{ lookup("env", "VMWARE_PASSWORD") }}
