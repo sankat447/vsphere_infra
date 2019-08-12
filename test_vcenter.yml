@@ -1,6 +1,6 @@
 ---
 - name: Testing vCenter connection and parameters
-- hosts: all
+  hosts: all
   tasks:
     - name: Debuging the parameters
       debug:
