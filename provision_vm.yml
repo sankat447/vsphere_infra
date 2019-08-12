@@ -1,6 +1,5 @@
 ---
-- name: Run Sample Job
-  hosts: all
+- hosts: all
   task:
     - debug:
         msg: Just echo something
