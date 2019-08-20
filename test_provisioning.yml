@@ -16,3 +16,4 @@
       state: poweredon
       cluster: "OpenShift Containers"
       wait_for_ip_address: yes
+
