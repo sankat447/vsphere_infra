@@ -9,11 +9,32 @@
       username: '{{ lookup("env", "VMWARE_USER") }}'
       password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
       validate_certs: False
-      name: test_ansible
-      template: "rhcos-latest"
-      datacenter: "Plainview Datacenter"
-      folder: "Openshift 4.1"
+      name: '{{vm_name}}'
+      template: '{{template_name}}'
+      datacenter: '{{datacenter}}
+      folder: {{folder}}
       state: poweredon
-      cluster: "OpenShift Containers"
+      cluster: {{cluster}}
       wait_for_ip_address: yes
+      networks:
+      - name: VM Network
+        ip: {{ip_address}}
+        netmask: 255.255.255.0
+        gateway: {{gateway}}
+        domain: {{doamin}}
+        dns_servers:
+        - {{dns1}}
+        - {{dns2}}
+      - vlan: {{vlan}}
+        type: static
+      customization:
+        autologon: yes
+        dns_servers:
+        - {{dns1}}
+        - {{dns2}}
+        domain: {{domain}}
+        password: {{new_password}}
+        runonce:
+        - powershell.exe -ExecutionPolicy Unrestricted -File C:\Windows\Temp\ConfigureRemotingForAnsible.ps1 -ForceNewSSLCert -EnableCredSSP
+    delegate_to: localhost
 
