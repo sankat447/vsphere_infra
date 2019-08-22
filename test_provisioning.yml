@@ -27,11 +27,3 @@
         - {{dns2}}
       - vlan: {{vlan}}
         type: static
-      customization:
-        autologon: yes
-        dns_servers:
-        - {{dns1}}
-        - {{dns2}}
-        domain: {{domain}}
-        password: {{new_password}}
-        
