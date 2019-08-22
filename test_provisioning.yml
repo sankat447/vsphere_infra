@@ -16,12 +16,3 @@
       state: poweredon
       cluster: '{{cluster}}'
       wait_for_ip_address: yes
-      networks:
-      - name: VM Network
-        ip: '{{ip_address}}'
-        netmask: 255.255.255.0
-        gateway: '{{gateway}}'
-        domain: '{{doamin}}'
-        dns_servers:
-        - '{{dns1}}'
-        - '{{dns2}}'
