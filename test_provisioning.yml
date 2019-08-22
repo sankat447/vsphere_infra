@@ -27,3 +27,13 @@
         - {{dns2}}
       - vlan: {{vlan}}
         type: static
+      customization:
+        autologon: yes
+        dns_servers:
+        - {{dns1}}
+        - {{dns2}}
+        domain: {{domain}}
+        password: {{new_password}}
+        runonce:
+        - powershell.exe -ExecutionPolicy Unrestricted -File C:\Windows\Temp\ConfigureRemotingForAnsible.ps1 -ForceNewSSLCert -EnableCredSSP
+    delegate_to: localhost
