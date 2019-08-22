@@ -11,17 +11,17 @@
       validate_certs: False
       name: '{{vm_name}}'
       template: '{{template_name}}'
-      datacenter: '{{datacenter}}
-      folder: {{folder}}
+      datacenter: '{{datacenter}}'
+      folder: '{{folder}}'
       state: poweredon
-      cluster: {{cluster}}
+      cluster: '{{cluster}}'
       wait_for_ip_address: yes
       networks:
       - name: VM Network
-        ip: {{ip_address}}
+        ip: '{{ip_address}}'
         netmask: 255.255.255.0
-        gateway: {{gateway}}
-        domain: {{doamin}}
+        gateway: '{{gateway}}'
+        domain: '{{doamin}}'
         dns_servers:
-        - {{dns1}}
-        - {{dns2}}
+        - '{{dns1}}'
+        - '{{dns2}}'
