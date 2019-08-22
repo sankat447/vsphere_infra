@@ -1,7 +1,18 @@
 ---
-- name: Testing vCenter connection and parameters
+- name: Create a VM from a template
   hosts: all
+  gather_facts: no
   tasks:
-    - name: Debuging the parameters
-      debug:
-        msg: vCenter = {{ lookup("env", "VMWARE_HOST") }} {{ lookup("env", "VMWARE_USER") }} {{ lookup("env", "VMWARE_PASSWORD") }}
+  - name: Clone the template
+    vmware_guest:
+      hostname: '{{ lookup("env", "VMWARE_HOST") }}'
+      username: '{{ lookup("env", "VMWARE_USER") }}'
+      password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
+      validate_certs: False
+      name: '{{vm_name}}'
+      template: '{{template_name}}'
+      datacenter: '{{datacenter}}'
+      folder: '{{folder}}'
+      state: poweredon
+      cluster: '{{cluster}}'
+      wait_for_ip_address: yes
