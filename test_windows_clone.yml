@@ -17,11 +17,11 @@
       cluster: '{{cluster}}'
       networks:
       - name: 'VM Network'
-        ip: {{ip_address}}
+        ip: '{{ip_address}}'
         netmask: 255.255.255.0
-        gateway: {{gateway}}
-        domain: {{domain}}
+        gateway: '{{gateway}}'
+        domain: '{{domain}}'
         dns_servers:
-          - {{dns1}}
-          - {{dns2}}
+          - '{{dns1}}'
+          - '{{dns2}}'
       wait_for_ip_address: yes
