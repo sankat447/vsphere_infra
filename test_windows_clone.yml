@@ -17,11 +17,22 @@
       cluster: '{{cluster}}'
       networks:
       - name: 'VM Network'
-        ip: '{{ip_address}}'
-        netmask: 255.255.255.0
-        gateway: '{{gateway}}'
-        domain: '{{domain}}'
-        dns_servers:
-          - '{{dns1}}'
-          - '{{dns2}}'
+        type: dhcp
       wait_for_ip_address: yes
+    register: vm_output
+
+  - debug:
+      var: vm_output  
+
+  - name: Add additional disks
+    vmware_guest_disk:
+      uuid: "{{ vm_output.instance.instance_uuid }}"
+      datacenter: "{{ datacenter }}"
+      disk: 
+      - size_gb: "{{ item }}"
+        type: thick
+        state: present
+    loop: 
+    - "{{ disk1_gb | default('') }}"
+    - "{{ disk2_gb | default('') }}"
+    - "{{ disk3_gb | default('') }}"
