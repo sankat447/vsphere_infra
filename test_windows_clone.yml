@@ -31,6 +31,7 @@
       disk: 
       - size_gb: "{{ item }}"
         type: thick
+        autoselect_datastore: true
         state: present
     loop: 
     - "{{ disk1_gb | default('') }}"
