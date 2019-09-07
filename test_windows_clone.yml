@@ -30,13 +30,17 @@
       use_instance_uuid: true
       datacenter: "{{ datacenter }}"
       disk: 
-      - size_gb: "{{ item }}"
+      - size_gb: "{{ item.size | int }}"
         type: thick
         scsi_controller: 1
+        unit_number: "{{ item.unit_number }}"
         autoselect_datastore: true
         state: present
-    when: item | length > 0
+    when: item.size | length > 0
     loop: 
-    - "{{ disk1_gb | default('') }}"
-    - "{{ disk2_gb | default('') }}"
-    - "{{ disk3_gb | default('') }}"
+    - size: "{{ disk1_gb | default('') }}"
+      unit_number: 0
+    - size: "{{ disk2_gb | default('') }}"
+      unit_number: 1
+    - size: "{{ disk3_gb | default('') }}"
+      unit_number: 2
