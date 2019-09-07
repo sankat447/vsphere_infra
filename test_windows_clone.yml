@@ -13,7 +13,7 @@
       template: '{{template_name}}'
       datacenter: '{{datacenter}}'
       folder: '{{folder}}'
-      state: poweredon
+      state: poweredoff
       cluster: '{{cluster}}'
       networks:
       - name: 'VM Network'
