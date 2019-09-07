@@ -39,8 +39,8 @@
     when: item.size | length > 0
     loop: 
     - size: "{{ disk1_gb | default('') }}"
-      unit_number: 0
-    - size: "{{ disk2_gb | default('') }}"
       unit_number: 1
-    - size: "{{ disk3_gb | default('') }}"
+    - size: "{{ disk2_gb | default('') }}"
       unit_number: 2
+    - size: "{{ disk3_gb | default('') }}"
+      unit_number: 3
