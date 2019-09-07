@@ -27,6 +27,7 @@
   - name: Add additional disks
     vmware_guest_disk:
       uuid: "{{ vm_output.instance.instance_uuid }}"
+      use_instance_uuid: true
       datacenter: "{{ datacenter }}"
       disk: 
       - size_gb: "{{ item }}"
