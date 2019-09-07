@@ -14,7 +14,7 @@
       template: '{{template_name}}'
       datacenter: '{{datacenter}}'
       folder: '{{folder}}'
-      state: poweredoff
+      state: poweredon
       cluster: '{{cluster}}'
       networks:
       - name: 'VM Network'
