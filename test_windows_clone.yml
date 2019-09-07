@@ -1,6 +1,7 @@
 ---
 - name: Create a VM from a template
-  hosts: all
+  hosts: localhost
+  connection: local
   gather_facts: no
   tasks:
   - name: Clone the template
@@ -26,13 +27,16 @@
 
   - name: Add additional disks
     vmware_guest_disk:
+      hostname: '{{ lookup("env", "VMWARE_HOST") }}'
+      username: '{{ lookup("env", "VMWARE_USER") }}'
+      password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
+      validate_certs: False
       uuid: "{{ vm_output.instance.instance_uuid }}"
       use_instance_uuid: true
       datacenter: "{{ datacenter }}"
       disk: 
       - size_gb: "{{ item.size | int }}"
-        type: thick
-        scsi_type: lsilogicsas
+        type: thin
         scsi_controller: 1
         unit_number: "{{ item.unit_number }}"
         autoselect_datastore: true
