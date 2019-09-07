@@ -19,13 +19,29 @@
       networks:
       - name: 'VM Network'
         type: dhcp
-      wait_for_ip_address: yes
+#      wait_for_ip_address: yes
     register: vm_output
 
   - debug:
       var: vm_output  
+      verbosity: 1
+  
+  - name: Get existing datastores information
+    vmware_guest_disk_facts:
+      hostname: '{{ lookup("env", "VMWARE_HOST") }}'
+      username: '{{ lookup("env", "VMWARE_USER") }}'
+      password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
+      validate_certs: False
+      uuid: "{{ vm_output.instance.instance_uuid }}"
+      use_instance_uuid: true
+      datacenter: "{{ datacenter }}"
+    register: disks_output
 
-  - name: Add additional disks
+  - debug:
+      var: disks_output
+      verbosity: 1
+
+  - name: Add additional disks to the same datastore as disk '0' on SCSI controller 1
     vmware_guest_disk:
       hostname: '{{ lookup("env", "VMWARE_HOST") }}'
       username: '{{ lookup("env", "VMWARE_USER") }}'
@@ -39,7 +55,7 @@
         type: thin
         scsi_controller: 1
         unit_number: "{{ item.unit_number }}"
-        autoselect_datastore: true
+        datastore: "{{ disks_output.guest_disk_facts['0'].backing_datastore }}"
         state: present
     when: item.size | length > 0
     loop: 
