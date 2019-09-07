@@ -32,6 +32,7 @@
       disk: 
       - size_gb: "{{ item.size | int }}"
         type: thick
+        scsi_type: lsilogicsas
         scsi_controller: 1
         unit_number: "{{ item.unit_number }}"
         autoselect_datastore: true
