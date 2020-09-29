@@ -10,9 +10,9 @@
       password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
       validate_certs: False
       name: 'TESTVM001'
-      template: 'rhcos-latest'
-      datacenter: 'Plainview Datacenter'
-      folder: 'Openshift 4.1'
+      template: 'rhel8-std'
+      datacenter: 'Plainview'
+      folder: 'OCP-Support'
       state: poweredon
-      cluster: 'OpenShift Containers'
+      cluster: 'OpenShift'
       wait_for_ip_address: yes
